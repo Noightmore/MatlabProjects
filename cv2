@@ -1,0 +1,5 @@
+clear
+close all
+clc
+
+C = radn(randi[10, 40],1,3)
