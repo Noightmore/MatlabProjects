@@ -13,7 +13,7 @@ X=X(cisla,:);
 X=X.';
 convertCharsToString(X)
 
-% puvodni zadani:
+% puvodni reseni pomoci cyklu:
 %
 %for i = 1:length(c)
 %    for j = 1:length(c)
