@@ -1,4 +1,4 @@
-clc; clear all; close all; echo off;
+clc; close all; echo off;
 
 % 1) pravidelny sestiuhelni
 
@@ -15,9 +15,9 @@ x = -5; 0.05; 5;
 % a. do jednoho 2D obrázku
 
 figure()
-x1 = funkce(x);
-x2 = funkce(x,1);
-x3 = funkce(x,2);
+x1 = funkce2(x);
+x2 = funkce2(x,1);
+x3 = funkce2(x,2);
 
 plot(0, x1);
 hold on
@@ -25,7 +25,7 @@ plot(x, x2);
 plot(x, x3);
 hold off;
 
-title = "grafy funkci";
+title("grafy funkci");
 xlabel('x');
 ylabel('f(x,y)');
 legend({'f(x)','f(x,1)', 'f(x,2)'},'Location','northeast');
@@ -68,7 +68,7 @@ yh = meshgrid(-6:0.2:6);
 xf = funkce(xh,xy);
 
 mesh(x,y,xf);
-title('Funkce s ruznymi argumenty');
+title ("Funkce s ruznymi argumenty");
 
 
 % 2) Napište   funkci   v   Matlabu,   která   vyhodnotí   funkční   předpis   daný   níže. 
@@ -77,18 +77,28 @@ title('Funkce s ruznymi argumenty');
 % Funkce tedy sama rozpozná kolik vstupních proměnných uživatel zadá(nargin). 
 % Funkce nechť funguje vektorově, tedy zadá-li uživatel libovolně rozměrnépole hodnot,
 % vyhodnotí se funkce pro každý prvek pole zvlášť (element-wise).
-% Zákazpoužití cyklů for nebo while.)
+% Zákaz použití cyklů for nebo while.)
+
+function out = funkce2(x,y)
+    switch nargin
+        case 1
+            y = 0;
+        otherwise
+            % nic se neprovede
+    end
+    out = x.exp(-x.^2-y.^2) + tanh(x.y);
+end
 
 function out = funkce(x,y)
-	switch nargin
-	 case 1
-            	if x == null
-                	x = 0;
-            	else
-                	y = 0;
-            	end
-       	 otherwise
-            	% nic se neprovede
-   	 end
-    out = x.exp(-x.^2-y.^2) + tanh(x.y);
+    switch nargin
+        case 1
+            if x == null
+                x = 0;
+            else
+                y = 0;
+            end
+        otherwise
+            % nic se neprovede
+    end
+    out = x.exp(-x.^2-y.^2) + tanh(x*y);
 end
