@@ -1,4 +1,4 @@
-function x = Newton(x0, f, eps, maxinter, delta )
+function [x,i] = Newton(x0, f, eps, maxinter, delta )
 	x = x0;
 	i = 0;
 	while i < maxinter && abs(f(x) > eps)
