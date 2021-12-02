@@ -14,7 +14,7 @@ syms x
 sI1 = vpa(int(1/(2 + cos(x)),x,0,2pi))
 
 rozdeleni = 0:krok:sqrt(3)-krok;
-I2 = sum((rozdeleni+krok2).atan(rozdeleni+krok2)*krok)
+I2 = sum((rozdeleni+krok2).*atan(rozdeleni+krok2)*krok)
 sI2 = vpa(int(x*atan(x),x,0,sqrt(3)))
 
 rozdeleni = 0:krok:2pi-krok;
