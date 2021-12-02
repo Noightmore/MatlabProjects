@@ -9,27 +9,27 @@ close all;
 krok=0.01;
 rozdeleni = 0:krok:2pi-krok;
 
-I1 = sum(1./(2+cos(rozdeleni+krok2))*krok)
+I1 = sum(1./(2+cos(rozdeleni+krok/2))*krok)
 syms x
 sI1 = vpa(int(1/(2 + cos(x)),x,0,2pi))
 
 rozdeleni = 0:krok:sqrt(3)-krok;
-I2 = sum((rozdeleni+krok2).*atan(rozdeleni+krok2)*krok)
+I2 = sum((rozdeleni+krok/2).*atan(rozdeleni+krok/2)*krok)
 sI2 = vpa(int(x*atan(x),x,0,sqrt(3)))
 
 rozdeleni = 0:krok:2pi-krok;
-I3 = sum(sqrt(1-sin(2.*(rozdeleni+krok2)))*krok)
+I3 = sum(sqrt(1-sin(2.*(rozdeleni+krok/2)))*krok)
 sI3 = vpa(int(sqrt(1-sin(2*x)),0,2pi))
 
 rozdeleni = -10:krok:5-krok;
 
-I4  = sum(exp(-(rozdeleni+krok2).^2)*krok)
+I4  = sum(exp(-(rozdeleni+krok/2).^2)*krok)
 sI4 = vpa(int(exp(-(x)^2),x,-10,5))
 
 
 rozdeleni = -99999:krok:99999;
 
-I5  = sum(exp(-(rozdeleni+krok2).^2)*krok)
+I5  = sum(exp(-(rozdeleni+krok/2).^2)*krok)
 sI5 = vpa(int(exp(-(x)^2),x, -Inf, Inf))
 
 % 2) 
