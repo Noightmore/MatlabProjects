@@ -7,24 +7,24 @@ close all;
 
 
 krok=0.01;
-rozdeleni = 0:krok:2pi-krok;
+rozdeleni = 0:krok:2*pi-krok;
 
 I1 = sum(1./(2+cos(rozdeleni+krok/2))*krok)
 syms x
-sI1 = vpa(int(1/(2 + cos(x)),x,0,2pi))
+sI1 = vpa(int(1/(2 + cos(x)),x,0,2*pi))
 
 rozdeleni = 0:krok:sqrt(3)-krok;
 I2 = sum((rozdeleni+krok/2).*atan(rozdeleni+krok/2)*krok)
 sI2 = vpa(int(x*atan(x),x,0,sqrt(3)))
 
-rozdeleni = 0:krok:2pi-krok;
+rozdeleni = 0:krok:2*pi-krok;
 I3 = sum(sqrt(1-sin(2.*(rozdeleni+krok/2)))*krok)
-sI3 = vpa(int(sqrt(1-sin(2*x)),0,2pi))
+sI3 = vpa(int(sqrt(1-sin(2*x)),0,2*pi))
 
 rozdeleni = -10:krok:5-krok;
 
 I4  = sum(exp(-(rozdeleni+krok/2).^2)*krok)
-sI4 = vpa(int(exp(-(x)^2),x,-10,5))
+sI4 = vpa(int(exp(-(x)^2), x, -10,5))
 
 
 rozdeleni = -99999:krok:99999;
@@ -37,27 +37,27 @@ sI5 = vpa(int(exp(-(x)^2),x, -Inf, Inf))
 % analyticky
 x=1:1:9999;
 
-f1 = ((-1).^x.*(2.^(x-1)));
+f1 = ((-1).^x./(2.^(x-1)));
 s1 = sum(f1)
 
 f2 = 1./(x.*(x+1));
 s2 = sum(f2)
 
-f3 = ((-1).^x.*(x));
+f3 = ((-1).^x./(x));
 s3 = sum(f3)
 
-f4 = ((2.*x) - 1).*(2.^x);
+f4 = ((2.*x) - 1)./(2.^x);
 s4 = sum(f4)
 
 % symbolicky
 syms n
-ss1 = vpa(symsum((-1)^n (1(2^(n - 1) )),n,1,Inf))
+ss1 = vpa(symsum((-1)^n *(1/(2^(n - 1) )),n,1,Inf))
 
 ss2 = vpa(symsum(1/(n*(n + 1)), n, 1, Inf))
 
-ss3 = vpa(symsum((-1)^n (1n), n, 1, Inf))
+ss3 = vpa(symsum((-1)^n *(1/n), n, 1, Inf))
 
-ss4 = vpa(symsum((2*n - 1)2^n , n, 1, Inf))
+ss4 = vpa(symsum((2*n - 1)/2^n , n, 1, Inf))
 
 % 3) 
 
