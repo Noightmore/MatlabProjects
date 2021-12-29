@@ -1,0 +1,18 @@
+clear
+close all
+clc
+
+step = 0.1;
+realPartPlot = -2:step:1;
+imaginaryPartPlot = -1:step:1;
+
+hold on
+
+for re = realPartPlot
+    for im = imaginaryPartPlot
+        c = re + im*1i;
+        if(mandelbrotCheck(c, 512))
+            plot(re, im, 'r.');
+        end
+    end
+end
