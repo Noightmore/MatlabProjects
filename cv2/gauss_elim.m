@@ -1,7 +1,8 @@
 function [x, U] = gauss_elim(A,b)
     
 n = size(A, 1);  
-v = zeros(n, 1); 
+v = zeros(n, 1);
+tol = 1e-15;
 
 for i = 1 : 1 : n    
    v(i) = i;
@@ -19,11 +20,15 @@ for elem_i = 1 : 1 : n
         end
     end
     
+    if abs(A(elem_i, elem_i)) < tol && A(elem_i, elem_i) ~= 0
+       error('singular');
+    end 
+    
     tmp_v = v;
     v(elem_i) = tmp_v(max_pos);
     v(max_pos) = tmp_v(elem_i);
     
-          
+    
     for i = 1 : 1 : n
         if i ~= elem_i
             tau = A(v(i), elem_i) / A(v(elem_i), elem_i);
