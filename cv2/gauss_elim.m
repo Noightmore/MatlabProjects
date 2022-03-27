@@ -1,48 +1,36 @@
-function [x, U] = gauss_elim(A,b)
-    
-n = size(A, 1);  
-v = zeros(n, 1);
-tol = 1e-15;
+function [x,U]=gauss_elim(A,b)
 
-for i = 1 : 1 : n    
-   v(i) = i;
-end
+if det(A) - 1e-15 > 0  
+    n=length(b);
+    m=zeros(n,1);
+    x=zeros(n,1);
 
-x = zeros(n, 1);
-
-for elem_i = 1 : 1 : n
-    max = abs(A(v(elem_i), v(elem_i)));    
-    max_pos = elem_i;    
-    for l =  elem_i : 1 : n        
-        if abs(A(v(l), v(elem_i))) > max            
-            max = abs(A(v(l), v(elem_i)));            
-            max_pos = l;            
+    maxIndex=zeros(n,1);
+    for k = 1:n
+        for i = k:n
+            if A(i,k) == max(A(:,k))
+            maxIndex(k) = i;
+            foo = A(k,:);
+            A(k,:) = A(maxIndex(k),:);
+            A(maxIndex(k),:) = foo;
+            end           
         end
     end
-    
-    if abs(A(elem_i, elem_i)) < tol && A(elem_i, elem_i) ~= 0
-       error('singular');
-    end 
-    
-    tmp_v = v;
-    v(elem_i) = tmp_v(max_pos);
-    v(max_pos) = tmp_v(elem_i);
-    
-    
-    for i = 1 : 1 : n
-        if i ~= elem_i
-            tau = A(v(i), elem_i) / A(v(elem_i), elem_i);
-            for j = elem_i : 1 : n
-                A(v(i), j) = A(v(i), j) - A(v(elem_i), j) * tau;                       
-            end
-            b(v(i)) = b(v(i)) - b(v(elem_i)) * tau;
+    for j = 1:n-1
+        m(j+1:n) = A(j+1:n,j)/A(j,j);
+        for i = k+1:n
+            A(i, j+1:n) = A(i,j+1:n)-m(i)*A(j,j+1:n);
         end
+        b(j+1:n) = b(j+1:n)-b(j)*m(j+1:n);
     end
+    U = triu(A);
+    x(n) = b(n)/A(n,n);
+    for l = n-1:-1:1
+        b(1:l)=b(1:l)-x(l+1)* U(1:l,l+1);
+        x(l)=b(l)/U(l,l);
+    end
+else
+    error('singular');
 end
 
-for i = 1 : 1 : n
-    x(i) = b(v(i)) / A(v(i), i);
-end
-
-U = A;
 end
