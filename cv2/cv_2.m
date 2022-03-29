@@ -1,4 +1,7 @@
 clear ; clc ; close all
 n=4;
 b = ones(1,n);
-gauss_elim(pascal(n),b)
+A = pascal(n)
+e = gauss_elim(A,b)
+ee = A\b'
+[L U] = lu(A)
