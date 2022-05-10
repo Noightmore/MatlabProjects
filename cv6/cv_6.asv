@@ -1,10 +1,12 @@
 % cv_6
 clc;clear;close all
 
-drawGraph("data0");
-drawGraph("data1");
-drawGraph("data2");
-drawGraph("data3");
+
+
+generateGraph("data0");
+generateGraph("data1");
+generateGraph("data2");
+generateGraph("data3");
 
 function [] = drawGraph(dataFile)
    
@@ -14,9 +16,9 @@ function [] = drawGraph(dataFile)
     
     
     hold on;
-    title('Interpolation of dataset ' + dataFile);
+    title('Interpolace datasetu ' + dataFile);
     xlabel('input');
-    ylabel('Interpolated function values');
+    ylabel('Interpolated ');
     legend('Location','bestoutside');
     ylim([-15 15])
 
@@ -40,5 +42,3 @@ function [] = drawGraph(dataFile)
     clf;
 
 end
-
-
