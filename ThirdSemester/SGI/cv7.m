@@ -6,7 +6,7 @@ N2 = 20;
 
 Fs = 10;
 t = 1:1/Fs:2-1/Fs; 
-t2 = 1:1/(2*Fs):2; % idk
+t2 = 1:1/(2*Fs):2-1/(2*Fs); % idk
 
 F1 = 4;
 F2 = 2.5;
@@ -35,17 +35,26 @@ X22 = abs(DFT(f22, N2));
 X33 = abs(DFT(f33, N2));
 X44 = abs(DFT(f44, N2));
 % 
-subplot(2,4, 1);
+subplot(4,2, 1);
 stem(t, X1);
 
-subplot(2, 4, 2);
+subplot(4, 2, 2);
 stem(t2, X11);
 
-subplot(2, 4, 3);
+subplot(4, 2, 3);
 stem(t ,X2);
 
-subplot(2, 4, 5);
+subplot(4, 2, 4);
+stem(t2, X22);
+
+subplot(4, 2, 5);
 stem(t ,X3);
 
-subplot(2, 4, 7);
+subplot(4, 2, 6);
+stem(t2, X33);
+
+subplot(4, 2, 7);
 stem(t ,X4);
+
+subplot(4, 2, 8);
+stem(t2, X44);
