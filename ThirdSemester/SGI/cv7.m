@@ -6,7 +6,7 @@ N2 = 20;
 
 Fs = 10;
 t = 1:1/Fs:2-1/Fs; 
-t2 = 1:1/(2*Fs):2-1/(2*Fs); % idk
+t2 = 1:1/(2*Fs):2-1/(2*Fs);
 
 F1 = 4;
 F2 = 2.5;
@@ -29,12 +29,11 @@ X2 = abs(DFT(f2, N1));
 X3 = abs(DFT(f3, N1));
 X4 = abs(DFT(f4, N1));
 
-% dft pro N2 susuje
 X11 = abs(DFT(f11, N2));
 X22 = abs(DFT(f22, N2));
 X33 = abs(DFT(f33, N2));
 X44 = abs(DFT(f44, N2));
-% 
+
 subplot(4,2, 1);
 stem(t, X1);
 
