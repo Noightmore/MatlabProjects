@@ -17,8 +17,8 @@ ylabel('|X(f)|');
 
 
 % a) průmerovací filtr délky 3
-A = ...; 
-B = ...;
+A = [1];
+B = [repelem([1/3], 3)];
 x1 = filter(B,A,x);
 X1 = fft(x1,N);
 subplot(5,1,2);
@@ -30,8 +30,8 @@ ylabel('|X(f)|');
 
 
 % b) průmerovací filtr délky 11
-A = ...; 
-B = ...;
+A = [1]; 
+B = repelem([1/11], 11);
 x2 = filter(B,A,x);
 X2 = fft(x2,N);
 subplot(5,1,3);
@@ -43,8 +43,8 @@ ylabel('|X(f)|');
 
 
 % c) diferenciátor: y[n] = x[n] - x[n-1]
-A = ...; 
-B = ...;
+A = [1]; 
+B = [1 -1];
 x3 = filter(B,A,x);
 X3 = fft(x3,N);
 subplot(5,1,4);
@@ -56,8 +56,8 @@ ylabel('|X(f)|');
 
 
 % d) trojúhelníkový filtr délky 3: y[n] = (x[n] + 2x[n-1] + x[n-2])/4
-A = ...; 
-B = ...;
+A = [4]; 
+B = [1 2 1];
 x4 = filter(B,A,x);
 X4 = fft(x4,N);
 subplot(5,1,5);

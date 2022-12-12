@@ -10,7 +10,7 @@ t = 0:1/Fs:T-1/Fs;
 % generování x
 x = 0;
 
-for i = 0:1:3999
+for i = 1:1:4000 % indexujeme od 1
     x = x + cos(2*pi*i*t);
 end
 
