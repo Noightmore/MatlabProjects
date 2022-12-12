@@ -5,8 +5,8 @@ N1 = 10;
 N2 = 20;
 
 Fs = 10;
-t = 1:1/Fs:2-1/Fs; 
-t2 = 1:1/(2*Fs):2-1/(2*Fs);
+t = 0:1/Fs:2-1/Fs; 
+t2 = 0:1/Fs:2-1/(Fs);
 
 F1 = 4;
 F2 = 2.5;
@@ -35,25 +35,25 @@ X33 = abs(DFT(f33, N2));
 X44 = abs(DFT(f44, N2));
 
 subplot(4,2, 1);
-stem(t, X1);
+stem(X1);
 
 subplot(4, 2, 2);
-stem(t2, X11);
+stem(X11);
 
 subplot(4, 2, 3);
-stem(t ,X2);
+stem(X2);
 
 subplot(4, 2, 4);
-stem(t2, X22);
+stem(X22);
 
 subplot(4, 2, 5);
-stem(t ,X3);
+stem(X3);
 
 subplot(4, 2, 6);
-stem(t2, X33);
+stem(X33);
 
 subplot(4, 2, 7);
-stem(t ,X4);
+stem(X4);
 
 subplot(4, 2, 8);
-stem(t2, X44);
+stem(X44);
