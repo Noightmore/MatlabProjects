@@ -1,8 +1,5 @@
 ## binomial coefficient
 
-[comment]: <> create binomial coefficient formula
-
-
 $$
 \binom{n}{k} = \frac{n!}{k!(n-k)!}
 $$
@@ -21,7 +18,18 @@ C(n,k) = n! / (k! * (n-k)!)
 
 ### priklad:
 
-mame 12 cisel -> 3 krat cislo 1, 4 cislo 2, 5 cislo 3
+mame slovo "ABECEDABECE" Kolika zpusoby muzeme provest prehozeni jednotlivych
+pismen tohoto slova
+
+pismeno A je v textu 2 krat
+pismeno B je v textu 2 krat
+pismeno C je v textu 2 krat
+pismeno D je v textu 1 krat
+pismeno E je v textu 4 krat
+
+pocet pismen v textu je 11
+
+P(n1, n2, ... nk) = 11! / (2! * 2! * 2! * 1! * 4!) = 207900
 
 
 
